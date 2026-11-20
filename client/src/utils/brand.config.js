@@ -1,0 +1,28 @@
+export const brand = {
+  name: 'Sawa Citi',
+  tagline: 'Shop Smart. Live Better.',
+  phone: '+250 788 316 000',
+  socialLinks: {
+    facebook: 'https://www.facebook.com/sawacitisupermarket/',
+    instagram: 'https://www.instagram.com/sawa_citi_supermarket/',
+    x: 'https://x.com/sawa_citi',
+    store: 'https://app.isokko.com/store/sawaciti',
+    appStore: 'https://apps.apple.com/rw/app/isokko/id6504858109',
+    googlePlay: 'https://play.google.com/store/apps/details?id=com.isokko.isokko',
+    whatsapp: 'https://wa.me/250788316000',
+  },
+  email: 'info@sawaciti.com',
+  location: 'Kigali, Rwanda',
+  hours: 'Open daily · 06:45 – 22:45',
+  colors: {
+    primary: '#0F8A3C',
+    primaryDark: '#0A5C3A',
+    primaryLight: '#EAF7EF',
+    accent: '#F5C518',
+    accentSoft: '#FFF9E6',
+    ink: '#111827',
+    muted: '#4B5563',
+    surface: '#FFFFFF',
+    page: '#F7F5EF',
+  },
+}
