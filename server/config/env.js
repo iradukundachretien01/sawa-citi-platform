@@ -60,22 +60,24 @@ if (isProduction) {
   if (env.PAYMENT_PROVIDER === 'mtn_momo') {
     const hasLegacyCredentials = Boolean(env.MOMO_API_USER && env.MOMO_API_KEY)
     const hasMigratedCredentials = Boolean(env.MOMO_USER_ID && env.MOMO_CREDENTIAL_TOKEN)
-    const missing = []
+    const hasCredentials = Boolean(
+      env.MOMO_SUBSCRIPTION_KEY && (hasLegacyCredentials || hasMigratedCredentials),
+    )
 
-    if (!env.MOMO_SUBSCRIPTION_KEY) missing.push('MOMO_SUBSCRIPTION_KEY')
-    if (!hasLegacyCredentials && !hasMigratedCredentials) {
-      missing.push('MOMO_USER_ID and MOMO_CREDENTIAL_TOKEN')
-    }
-    if (!env.MOMO_CALLBACK_URL) missing.push('MOMO_CALLBACK_URL')
+    if (!hasCredentials) {
+      console.warn(
+        'MTN MoMo credentials are incomplete; live MTN payments will stay hidden until configured.',
+      )
+    } else {
+      if (!env.MOMO_CALLBACK_URL) {
+        console.error('MOMO_CALLBACK_URL is required when MTN MoMo credentials are configured.')
+        process.exit(1)
+      }
 
-    if (missing.length > 0) {
-      console.error(`Missing MTN MoMo configuration: ${missing.join(', ')}`)
-      process.exit(1)
-    }
-
-    if (!env.MOMO_CALLBACK_URL.startsWith('https://')) {
-      console.error('MOMO_CALLBACK_URL must use https:// in production.')
-      process.exit(1)
+      if (!env.MOMO_CALLBACK_URL.startsWith('https://')) {
+        console.error('MOMO_CALLBACK_URL must use https:// in production.')
+        process.exit(1)
+      }
     }
   }
 

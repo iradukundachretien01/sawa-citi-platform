@@ -71,6 +71,18 @@ Register the callback host with MTN, expose `POST` and `PUT` on `/api/payments/w
 Payments stay pending until MTN confirms `SUCCESSFUL`; the order page verifies status every five
 seconds and the webhook verifies status again server-side before marking an order paid.
 
+## Deploy online
+
+Source repository: https://github.com/iradukundachretien01/sawa-citi-platform
+
+1. In Render, create a Blueprint from `render.yaml` and set `CLIENT_URL` to the final Vercel site URL
+   and `MONGO_URI` to a MongoDB Atlas connection string.
+2. In Vercel, import the same repository and set `VITE_API_URL` to the Render API URL followed by
+   `/api`, for example `https://your-api.onrender.com/api`.
+3. After both deployments finish, update Render `CLIENT_URL` with the real Vercel URL if it changed.
+4. Add the MTN MoMo variables in Render only after MTN credentials are approved. Set
+   `MOMO_CALLBACK_URL` to the Render API URL followed by `/api/payments/webhook`.
+
 ## Checks
 
 ```powershell
