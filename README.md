@@ -82,6 +82,9 @@ Source repository: https://github.com/iradukundachretien01/sawa-citi-platform
 3. After both deployments finish, update Render `CLIENT_URL` with the real Vercel URL if it changed.
 4. Add the MTN MoMo variables in Render only after MTN credentials are approved. Set
    `MOMO_CALLBACK_URL` to the Render API URL followed by `/api/payments/webhook`.
+5. The current live demo uses `ALLOW_EPHEMERAL_DB=true` and `SEED_DEMO=true`, so catalog and orders
+   reset when the API restarts. For a persistent store, set `MONGO_URI`, then set
+   `ALLOW_EPHEMERAL_DB=false` and `SEED_DEMO=false`.
 
 ## Checks
 

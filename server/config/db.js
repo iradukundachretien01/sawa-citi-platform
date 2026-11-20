@@ -7,13 +7,17 @@ async function connectDB() {
   let uri = env.MONGO_URI
 
   if (!uri) {
-    if (isProduction) {
+    if (isProduction && !env.ALLOW_EPHEMERAL_DB) {
       throw new Error('MONGO_URI is required in production')
     }
     const { MongoMemoryServer } = require('mongodb-memory-server')
     memoryServer = await MongoMemoryServer.create()
     uri = memoryServer.getUri()
-    console.log('Using in-memory MongoDB for development (data resets on restart).')
+    console.log(
+      isProduction
+        ? 'Using ephemeral public demo database (data resets on restart).'
+        : 'Using in-memory MongoDB for development (data resets on restart).',
+    )
   }
 
   mongoose.set('strictQuery', true)

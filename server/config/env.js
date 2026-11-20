@@ -12,6 +12,7 @@ const schema = z.object({
   PORT: z.coerce.number().int().positive().default(5000),
   CLIENT_URL: z.string().default('http://localhost:5173,http://127.0.0.1:5173'),
   MONGO_URI: z.string().optional().default(''),
+  ALLOW_EPHEMERAL_DB: booleanFromString.optional().default(false),
   JWT_ACCESS_SECRET: z.string().optional().default(''),
   JWT_REFRESH_SECRET: z.string().optional().default(''),
   ACCESS_TOKEN_TTL: z.string().default('15m'),
@@ -47,8 +48,10 @@ const env = {
 const isProduction = env.NODE_ENV === 'production'
 
 if (isProduction) {
-  if (env.SEED_DEMO) {
-    console.error('SEED_DEMO=true is for development only; set SEED_DEMO=false in production.')
+  if (env.SEED_DEMO && !env.ALLOW_EPHEMERAL_DB) {
+    console.error(
+      'SEED_DEMO=true requires ALLOW_EPHEMERAL_DB=true in production public demo mode.',
+    )
     process.exit(1)
   }
 
@@ -81,7 +84,9 @@ if (isProduction) {
     }
   }
 
-  const required = ['MONGO_URI', 'JWT_ACCESS_SECRET', 'JWT_REFRESH_SECRET']
+  const required = ['JWT_ACCESS_SECRET', 'JWT_REFRESH_SECRET']
+  if (!env.ALLOW_EPHEMERAL_DB) required.unshift('MONGO_URI')
+
   const missing = required.filter((key) => !env[key])
   if (missing.length > 0) {
     console.error(`Missing required production environment variables: ${missing.join(', ')}`)

@@ -16,11 +16,13 @@ services:
         sync: false
       - key: MONGO_URI
         sync: false
+      - key: ALLOW_EPHEMERAL_DB
+        value: true
       - key: JWT_ACCESS_SECRET
         generateValue: true
       - key: JWT_REFRESH_SECRET
         generateValue: true
       - key: SEED_DEMO
-        value: false
+        value: true
       - key: PAYMENT_PROVIDER
         value: mtn_momo
