@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import { Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
 import { useCategories } from '../../hooks/useCategories'
 import { brand } from '../../utils/brand.config'
-import AppDownloadLinks from '../common/AppDownloadLinks'
 import { FacebookIcon, InstagramIcon, XIcon } from '../common/SocialIcons'
 import Logo from './Logo'
 
@@ -68,15 +67,12 @@ export default function Footer() {
               <MessageCircle className="h-4 w-4" aria-hidden="true" />
             </a>
           </div>
-          <a
-            href={brand.socialLinks.store}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/get-app"
             className="mt-4 inline-flex text-xs font-semibold text-accent-300 transition hover:text-white"
           >
-            Shop on Isokko
-          </a>
-          <AppDownloadLinks className="mt-3" />
+            Install our Sawa Citi app
+          </Link>
         </div>
 
         <div>

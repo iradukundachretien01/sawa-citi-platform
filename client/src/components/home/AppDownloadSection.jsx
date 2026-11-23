@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Headphones, ShoppingBasket, Smartphone } from 'lucide-react'
 import { brand } from '../../utils/brand.config'
-import AppDownloadLinks from '../common/AppDownloadLinks'
+import InstallApp from '../common/InstallApp'
 
 const appFeatures = [
-  { icon: ShoppingBasket, title: 'Shop on the go', text: 'Browse Sawa Citi products on Isokko.' },
+  { icon: ShoppingBasket, title: 'Shop on the go', text: 'Browse Sawa Citi products in our own app.' },
   { icon: Smartphone, title: 'Order anytime', text: 'Place an order from your phone, day or night.' },
   { icon: Headphones, title: 'Get help fast', text: 'Reach our team through WhatsApp or the contact page.' },
 ]
@@ -22,22 +22,14 @@ export default function AppDownloadSection() {
               Take Sawa Citi with you
             </h2>
             <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/75">
-              Find us on Isokko in the App Store or Google Play. Browse products, place orders and
-              get support wherever you are.
+              Install the Sawa Citi app on your phone. Browse products, place orders and get support
+              wherever you are.
             </p>
-            <AppDownloadLinks className="mt-5" />
+            <InstallApp className="mt-5" />
             <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-semibold">
               <Link to="/get-app" className="inline-flex items-center gap-1.5 hover:text-accent-300">
                 See app features <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
-              <a
-                href={brand.socialLinks.store}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-accent-300"
-              >
-                Shop on Isokko
-              </a>
             </div>
           </div>
 

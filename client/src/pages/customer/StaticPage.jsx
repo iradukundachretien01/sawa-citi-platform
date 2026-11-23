@@ -67,7 +67,7 @@ const services = [
   {
     icon: Smartphone,
     title: 'Mobile shopping',
-    text: 'Find Sawa Citi on Isokko in the App Store or Google Play, or shop here from any browser.',
+    text: 'Install our own Sawa Citi app on your phone, or shop here from any browser.',
   },
 ]
 
@@ -94,7 +94,7 @@ const faqs = [
   },
   {
     q: 'Can I shop from a mobile app?',
-    a: 'Yes. Sawa Citi is listed on Isokko, available in the App Store and Google Play. You can also use this website from any phone browser.',
+    a: 'Yes. Install our own Sawa Citi app from the Get the App page — it works on Android and iPhone with no app store needed. You can also use this website from any phone browser.',
   },
   {
     q: 'Can I cancel an order?',

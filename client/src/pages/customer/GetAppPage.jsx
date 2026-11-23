@@ -3,15 +3,15 @@ import {
   BadgeCheck,
   ClipboardList,
   CreditCard,
+  Download,
   Headphones,
   MapPin,
   PackageCheck,
   PiggyBank,
   ShoppingBasket,
   Smartphone,
-  Store,
 } from 'lucide-react'
-import AppDownloadLinks from '../../components/common/AppDownloadLinks'
+import InstallApp from '../../components/common/InstallApp'
 import PageHeader from '../../components/common/PageHeader'
 import { brand } from '../../utils/brand.config'
 
@@ -19,7 +19,7 @@ const appFeatures = [
   {
     icon: ShoppingBasket,
     title: 'Browse and order',
-    text: 'Shop Sawa Citi products through the Isokko app and choose delivery or collection.',
+    text: 'Shop Sawa Citi products in the app and choose delivery or collection.',
   },
   {
     icon: PackageCheck,
@@ -29,7 +29,7 @@ const appFeatures = [
   {
     icon: ClipboardList,
     title: 'Repeat your weekly shop',
-    text: 'Use our reusable weekly list on the site to plan faster next time.',
+    text: 'Use our reusable weekly list to plan your next shop faster.',
   },
   {
     icon: Headphones,
@@ -38,7 +38,7 @@ const appFeatures = [
   },
 ]
 
-const siteAdvantages = [
+const appAdvantages = [
   {
     icon: PiggyBank,
     title: 'Biggest savings first',
@@ -66,8 +66,8 @@ export default function GetAppPage() {
     <div className="container-page py-8 sm:py-10">
       <PageHeader
         eyebrow="Mobile app"
-        title="Get the app"
-        description="Sawa Citi is available on Isokko. Download the app from the App Store or Google Play and shop from anywhere."
+        title="Get the Sawa Citi app"
+        description="Install our own app on your phone and shop from anywhere. It works on Android and iPhone — no app store required."
         actions={
           <Link to="/shop" className="btn-primary">
             Shop on the website
@@ -80,30 +80,28 @@ export default function GetAppPage() {
           <div className="max-w-xl">
             <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.18em] text-accent-300">
               <Smartphone className="h-4 w-4" aria-hidden="true" />
-              Isokko mobile app
+              Sawa Citi mobile app
             </span>
             <h2 className="mt-2 font-display text-xl font-extrabold sm:text-2xl">
-              Download it on your device
+              Put Sawa Citi on your home screen
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-white/75">
-              Open the store link below to find Sawa Citi, or use the website from any browser — your
-              cart, orders and account stay with you.
+              Install the app in seconds and open it like any other app on your phone. Your cart,
+              orders and account stay with you.
             </p>
-            <AppDownloadLinks className="mt-5" />
+            <InstallApp className="mt-5" />
           </div>
           <div className="rounded-card border border-white/15 bg-white/10 p-5">
-            <p className="font-display text-sm font-bold">Prefer your browser?</p>
-            <p className="mt-1 max-w-xs text-xs leading-relaxed text-white/70">
-              No install needed. Shop, track orders and save a weekly list right here.
-            </p>
-            <div className="mt-4 flex flex-col gap-2">
-              <Link to="/shop" className="btn-accent py-2 text-xs">
-                Browse products
-              </Link>
-              <Link to="/track" className="btn border border-white/30 text-xs text-white hover:bg-white/10">
-                Track an order
-              </Link>
+            <div className="flex items-center gap-3">
+              <img src="/icons/icon-192.png" alt="Sawa Citi app icon" className="h-16 w-16 rounded-2xl bg-white p-1" />
+              <div>
+                <p className="font-display text-sm font-bold">{brand.name}</p>
+                <p className="text-xs text-white/70">Fresh Market</p>
+              </div>
             </div>
+            <p className="mt-4 text-xs leading-relaxed text-white/70">
+              One app for shopping, order tracking, weekly lists and support.
+            </p>
           </div>
         </div>
       </section>
@@ -127,13 +125,12 @@ export default function GetAppPage() {
       </section>
 
       <section className="mt-8">
-        <h2 className="section-title">More tools on the website</h2>
+        <h2 className="section-title">Why install it</h2>
         <p className="mt-1 text-sm text-muted">
-          The app is convenient; the website gives you extra control over price, planning and
-          payment.
+          The app gives you the same control over price, planning and payment as the website.
         </p>
         <div className="mt-4 grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
-          {siteAdvantages.map((item) => {
+          {appAdvantages.map((item) => {
             const Icon = item.icon
             return (
               <div key={item.title} className="card p-5">
@@ -150,25 +147,24 @@ export default function GetAppPage() {
 
       <section className="mt-8 grid gap-4 lg:grid-cols-2">
         <div className="card p-5">
-          <h2 className="font-display text-base font-bold text-ink">Shop on Isokko</h2>
+          <h2 className="font-display text-base font-bold text-ink">How to install</h2>
           <p className="mt-1 text-sm leading-relaxed text-muted">
-            The app links open the Isokko store where Sawa Citi is listed. Product availability and
-            prices shown in the app are managed there.
+            On Chrome for Android, tap “Install Sawa Citi app” above or use the browser menu and
+            choose “Install app”. On iPhone or iPad, open this page in Safari, tap Share, then “Add to
+            Home Screen”.
           </p>
           <a
-            href={brand.socialLinks.store}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={typeof window !== 'undefined' ? window.location.origin : '/'}
             className="btn-outline mt-4 text-xs"
           >
-            <Store className="h-4 w-4" aria-hidden="true" />
-            Open the store
+            <Download className="h-4 w-4" aria-hidden="true" />
+            Open the app link
           </a>
         </div>
         <div className="card p-5">
           <h2 className="font-display text-base font-bold text-ink">Need a hand?</h2>
           <p className="mt-1 text-sm leading-relaxed text-muted">
-            Our team can help with orders, delivery and product questions.
+            Our team can help with orders, delivery, product questions and installing the app.
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             <a
