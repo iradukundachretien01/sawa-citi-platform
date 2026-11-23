@@ -7,8 +7,6 @@ export const brand = {
     instagram: 'https://www.instagram.com/sawa_citi_supermarket/',
     x: 'https://x.com/sawa_citi',
     store: 'https://app.isokko.com/store/sawaciti',
-    appStore: 'https://apps.apple.com/rw/app/isokko/id6504858109',
-    googlePlay: 'https://play.google.com/store/apps/details?id=com.isokko.isokko',
     whatsapp: 'https://wa.me/250788316000',
   },
   email: 'info@sawaciti.com',
