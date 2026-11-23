@@ -5,7 +5,7 @@ const RUNTIME = `${VERSION}-runtime`
 const PRECACHE = [
   '/',
   '/index.html',
-  '/manifest.webmanifest',
+  '/manifest.json',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
   '/apple-touch-icon.png',
